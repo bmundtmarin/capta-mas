@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Capta a tus estudiantes objetivo</title>
+  <title>captamas.cl</title>
   <style>
     body {
       margin: 0;
@@ -11,15 +11,16 @@
       background-color: #28a745;
       color: white;
       display: flex;
-      justify-content: center;
+      justify-content: space-between; /* text left, video right */
       align-items: center;
       height: 100vh;
-      text-align: center;
-      padding: 20px;
+      padding: 150px;
+      box-sizing: border-box;
     }
 
     .container {
-      max-width: 500px;
+      max-width: 400px;
+      flex: 1;
     }
 
     h1 {
@@ -48,6 +49,19 @@
 
     .button:hover {
       background-color: #f1f1f1;
+    }
+
+    /* Video styling */
+    .video-container {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .video-container video {
+      max-width: 260px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
 
     /* Modal styles */
@@ -79,8 +93,20 @@
       color: #28a745;
     }
 
+    .email-line {
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+    }
+
+    .email-note {
+      color: #777;
+      font-size: 0.9rem;
+      margin-top: -5px;
+      margin-bottom: 15px;
+    }
+
     .close-btn {
-      margin-top: 20px;
+      margin-top: 15px;
       display: inline-block;
       background: #28a745;
       color: white;
@@ -92,20 +118,37 @@
   </style>
 </head>
 <body>
+  <!-- Left side: text -->
   <div class="container">
-    <h1>Capta a tus<br>estudiantes objetivo</h1>
+    <h1>Capta a tus<br>estudiantes objetivo<br>con captamas.cl</h1>
     <p>
       Usamos tecnología de punta y estrategias personalizadas para ayudar a las universidades a conseguir sus futuros estudiantes estrella.
     </p>
     <div class="button" onclick="openModal()">¡CONVERSÉMOS!</div>
   </div>
 
+  <!-- Right side: video -->
+  <div class="video-container">
+    <video autoplay muted loop>
+      <source src="video.mp4" type="video/mp4">
+      Tu navegador no soporta video.
+    </video>
+  </div>
+
   <!-- Modal -->
   <div class="modal" id="contactModal">
     <div class="modal-content">
-      <h2>Contáctanos</h2>
-      <p>📧 contacto@captamas.cl</p>
-      <a class="close-btn" onclick="closeModal()">Cerrar</a>
+      <h2>Escríbenos a este correo:</h2>
+
+      <div class="email-line">
+        📬 bmundt@uc.cl
+      </div>
+      <p class="email-note">Bastián Mundt Marín <br> Cofundador</p>
+
+      <div style="margin-top: 15px;">
+        <a class="close-btn" style="background:#555;" onclick="closeModal()">Cerrar</a>
+        <a class="close-btn" onclick="copyEmail('bmundt@uc.cl')">Copiar</a>
+      </div>
     </div>
   </div>
 
@@ -115,6 +158,14 @@
     }
     function closeModal() {
       document.getElementById("contactModal").style.display = "none";
+    }
+    
+    function copyEmail(email) {
+      navigator.clipboard.writeText(email).then(() => {
+        alert("✅ Email copiado: " + email);
+      }).catch(err => {
+        alert("Error al copiar: " + err);
+      });
     }
   </script>
 </body>
