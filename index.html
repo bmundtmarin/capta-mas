@@ -115,6 +115,35 @@
       cursor: pointer;
       text-decoration: none;
     }
+    /* ✅ Mobile layout: stack text on top of video */
+      
+  @media (max-width: 768px) {
+    body {
+      flex-direction: column;       /* stack instead of side by side */
+      justify-content: center;      /* center vertically */
+      align-items: center;          /* center horizontally */
+      padding: 40px;                /* less padding on small screens */
+      height: auto;                 /* allow content to grow */
+    }
+
+    .container {
+      max-width: 90%;
+      text-align: left;           /* center text on mobile */
+      margin-bottom: 20px;
+    }
+
+    .video-container {
+      justify-content: center;      /* center video below text */
+      width: 100%;
+    }
+
+    .video-container video {
+      max-width: 90%;               /* make video responsive */
+    }
+  }
+
+
+
   </style>
 </head>
 <body>
